@@ -31,7 +31,7 @@ public class CmdVer extends Command {
 	            	this.teamMembers.add("Ryan");
 	            	this.teamMembers.add("Sebastien");
 	            	this.teamMembers.add("Jian");
-	            	this.teamMembers.add("");
+	            	this.teamMembers.add("Carmelo");
 	        		
 					return true;
 	            }
