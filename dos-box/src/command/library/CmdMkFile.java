@@ -21,9 +21,13 @@ class CmdMkFile extends Command {
 	public void execute(IOutputter outputter) {
 		String fileName = this.getParameterAt(0);
 		String fileContent = "";
-		if (this.getParameterCount() > 1)
+		if (doesFileHaveContent())
 			fileContent = this.getParameterAt(1);
 		File newFile = new File(fileName, fileContent);
 		this.getDrive().getCurrentDirectory().add(newFile);
+	}
+	
+	private boolean doesFileHaveContent() {
+		return (this.getParameterCount() > 1);
 	}
 }

@@ -47,16 +47,7 @@ public class Directory extends FileSystemItem {
 	}
 
 	public void add(File fileToAdd) {
-		
-		boolean isDuplicate = false;
-		
-		for(int i=0; i< this.content.size(); i++){
-			if (fileToAdd.getName().equals(this.content.get(i).getName())){
-				isDuplicate = true;
-			}
-		}
-		
-		if (!isDuplicate) {
+		if (!isDuplicate(fileToAdd)) {
 			this.content.add(fileToAdd);
 			if(hasAnotherParent(fileToAdd)) {
 				removeParent(fileToAdd);
@@ -66,6 +57,15 @@ public class Directory extends FileSystemItem {
 		else {
 			System.out.println("ERROR: Cannot create a duplicate file.");
 		}
+	}
+	
+	private boolean isDuplicate (File fileToAdd) {
+		for(int i=0; i< this.content.size(); i++){
+			if (fileToAdd.getName().equals(this.content.get(i).getName())){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private static boolean removeParent(FileSystemItem item) {
