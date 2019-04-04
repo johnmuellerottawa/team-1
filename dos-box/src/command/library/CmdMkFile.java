@@ -20,7 +20,9 @@ class CmdMkFile extends Command {
 	@Override
 	public void execute(IOutputter outputter) {
 		String fileName = this.getParameterAt(0);
-		String fileContent = this.getParameterAt(1);
+		String fileContent = "";
+		if (this.getParameterCount() > 1)
+			fileContent = this.getParameterAt(1);
 		File newFile = new File(fileName, fileContent);
 		this.getDrive().getCurrentDirectory().add(newFile);
 	}
